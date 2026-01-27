@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AR Experience - Lihat model 3D Sunan Gunung Jati dengan Augmented Reality">
+    <title>AR Experience - Sunan Gunung Jati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- A-Frame and AR.js -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ar-styles.css">
+</head>
+
+<body class="ar-body">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <h2>Memuat AR Experience...</h2>
+            <p>Mohon izinkan akses kamera</p>
+        </div>
+    </div>
+
+    <!-- AR Scene -->
+    <a-scene id="arScene" embedded
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+        vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true; precision: medium;"
+        loading-screen="enabled: false">
+
+        <!-- Camera -->
+        <a-camera gps-camera rotation-reader></a-camera>
+
+        <!-- Marker-based AR -->
+        <a-marker preset="hiro" id="marker">
+            <!-- 3D Model of Sunan Gunung Jati -->
+            <a-entity id="model" gltf-model="url(assets/models/sunan-gunung-jati.gltf)" scale="1 1 1" position="0 0.5 0"
+                rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
+            </a-entity>
+
+            <!-- Light -->
+            <a-light type="ambient" intensity="0.5"></a-light>
+            <a-light type="directional" intensity="0.8" position="1 1 1"></a-light>
+        </a-marker>
+
+        <!-- Markerless AR (GPS-based fallback) -->
+        <a-entity id="markerlessModel" gltf-model="url(assets/models/sunan-gunung-jati.gltf)" scale="0.5 0.5 0.5"
+            position="0 0 -3" rotation="0 0 0" visible="false"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear">
+        </a-entity>
+    </a-scene>
+
+    <!-- AR Controls UI -->
+    <div id="arControls" class="ar-controls">
+        <!-- Back Button -->
+        <button id="backBtn" class="ar-btn ar-back-btn" aria-label="Kembali">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            <span>Kembali</span>
+        </button>
+
+        <!-- Instructions -->
+        <div id="instructions" class="ar-instructions">
+            <div class="instruction-content">
+                <div class="instruction-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                        <line x1="7" y1="2" x2="7" y2="22"></line>
+                        <line x1="17" y1="2" x2="17" y2="22"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <line x1="2" y1="7" x2="7" y2="7"></line>
+                        <line x1="2" y1="17" x2="7" y2="17"></line>
+                        <line x1="17" y1="17" x2="22" y2="17"></line>
+                        <line x1="17" y1="7" x2="22" y2="7"></line>
+                    </svg>
+                </div>
+                <h3>Arahkan kamera ke marker</h3>
+                <p>Atau gunakan mode tanpa marker dengan tombol di bawah</p>
+                <button id="toggleModeBtn" class="btn btn-secondary btn-small">
+                    Mode Tanpa Marker
+                </button>
+            </div>
+        </div>
+
+        <!-- Audio Controls -->
+        <div id="audioControls" class="audio-controls hidden">
+            <div class="audio-player">
+                <button id="playPauseBtn" class="audio-btn" aria-label="Play/Pause">
+                    <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <svg id="pauseIcon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                        style="display: none;">
+                        <path d="M6 4h4v16H6zM14 4h4v16h-4z" />
+                    </svg>
+                </button>
+                <div class="audio-info">
+                    <span class="audio-title">Kisah Sunan Gunung Jati</span>
+                    <div class="audio-progress">
+                        <div class="audio-progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="audio-time">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <button id="volumeBtn" class="audio-btn" aria-label="Volume">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Model Detected Indicator -->
+        <div id="markerStatus" class="marker-status">
+            <div class="status-indicator"></div>
+            <span id="statusText">Mencari marker...</span>
+        </div>
+
+        <!-- Info Panel -->
+        <div id="infoPanel" class="info-panel hidden">
+            <h3>Sunan Gunung Jati</h3>
+            <p class="info-subtitle">Syarif Hidayatullah (1448-1568 M)</p>
+            <p>
+                Salah satu Wali Songo yang menyebarkan Islam di wilayah Cirebon
+                dan sekitarnya. Pendiri Kesultanan Cirebon yang mengajarkan Islam
+                dengan pendekatan kultural.
+            </p>
+            <button id="closeInfoBtn" class="btn btn-secondary btn-small">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="narrationAudio" preload="auto">
+        <source src="assets/audio/narration.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-icon error">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+            <h3 id="errorTitle">Browser Tidak Mendukung AR</h3>
+            <p id="errorMessage">
+                Maaf, browser Anda tidak mendukung fitur AR atau akses kamera ditolak.
+                Silakan gunakan browser Chrome atau Firefox di perangkat mobile.
+            </p>
+            <div class="modal-buttons">
+                <button id="retryBtn" class="btn btn-primary">Coba Lagi</button>
+                <a href="index.html" class="btn btn-secondary">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ar-controller.js"></script>
+</body>
+
+</html>

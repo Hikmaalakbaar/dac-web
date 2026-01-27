@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Jelajahi sejarah Sunan Gunung Jati melalui pengalaman immersive learning dengan teknologi AR 3D. Dipersembahkan oleh DAC Indonesia.">
+    <title>Sunan Gunung Jati - Immersive Learning Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2 class="logo">Sunan Gunung Jati</h2>
+                <p class="tagline">Immersive Learning</p>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Beranda</a></li>
+                <li><a href="#sejarah" class="nav-link">Sejarah</a></li>
+                <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                <li><a href="#lokasi" class="nav-link">Lokasi</a></li>
+                <li><a href="ar-view.html" class="nav-link-cta">AR Experience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-label">Powered by DAC Indonesia</span>
+                <h1 class="hero-title">
+                    Mengenal Warisan<br>
+                    <span class="gradient-text">Sunan Gunung Jati</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Jelajahi perjalanan hidup dan ajaran salah satu Wali Songo terbesar
+                    melalui teknologi Augmented Reality yang memukau.
+                </p>
+                <div class="hero-buttons">
+                    <a href="ar-view.html" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        Mulai AR Experience
+                    </a>
+                    <a href="#sejarah" class="btn btn-secondary">Pelajari Sejarah</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Gulir Ke Bawah</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="sejarah" class="section history-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Sejarah</span>
+                <h2 class="section-title">Tentang Sunan Gunung Jati</h2>
+                <p class="section-subtitle">
+                    Salah satu tokoh penyebar Islam terbesar di tanah Jawa
+                </p>
+            </div>
+
+            <div class="history-content">
+                <div class="history-card main-card">
+                    <div class="card-image">
+                        <img src="assets/images/sunan-portrait.jpg" alt="Sunan Gunung Jati">
+                    </div>
+                    <div class="card-content">
+                        <h3>Syarif Hidayatullah</h3>
+                        <p class="card-subtitle">1448 - 1568 M</p>
+                        <p>
+                            Sunan Gunung Jati, atau yang bernama asli Syarif Hidayatullah,
+                            merupakan salah satu dari Wali Songo yang sangat berpengaruh dalam
+                            penyebaran agama Islam di Jawa Barat, khususnya di wilayah Cirebon
+                            dan sekitarnya.
+                        </p>
+                        <p>
+                            Beliau lahir pada tahun 1448 M di Mesir dan merupakan keturunan
+                            bangsawan dari garis Rasulullah SAW. Kedatangannya ke Nusantara
+                            membawa perubahan besar dalam perkembangan Islam di wilayah Cirebon.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="history-grid">
+                    <div class="history-card">
+                        <div class="card-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h4>Pendiri Kesultanan</h4>
+                        <p>
+                            Mendirikan Kesultanan Cirebon dan menjadi sultan pertama yang
+                            menyebarkan Islam dengan pendekatan kultural.
+                        </p>
+                    </div>
+
+                    <div class="history-card">
+                        <div class="card-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                        </div>
+                        <h4>Penyebar Ilmu</h4>
+                        <p>
+                            Mengajarkan ilmu agama Islam dan ilmu pengetahuan kepada masyarakat
+                            dengan metode yang mudah dipahami.
+                        </p>
+                    </div>
+
+                    <div class="history-card">
+                        <div class="card-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h4>Warisan Budaya</h4>
+                        <p>
+                            Meninggalkan warisan budaya dan spiritual yang masih dilestarikan
+                            hingga kini oleh masyarakat Cirebon.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="section gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Galeri</span>
+                <h2 class="section-title">Warisan Visual</h2>
+                <p class="section-subtitle">
+                    Dokumentasi makam dan peninggalan Sunan Gunung Jati
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="assets/images/history-3.jpg" alt="Kompleks Makam Sunan Gunung Jati">
+                    <div class="gallery-overlay">
+                        <h4>Kompleks Makam</h4>
+                        <p>Makam Sunan Gunung Jati di Cirebon</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/history-1.jpg" alt="Gerbang Makam">
+                    <div class="gallery-overlay">
+                        <h4>Gerbang Utama</h4>
+                        <p>Arsitektur Tradisional Jawa</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/history-5.jpg" alt="Interior Makam">
+                    <div class="gallery-overlay">
+                        <h4>Interior Makam</h4>
+                        <p>Kemegahan Spiritual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="lokasi" class="section location-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Lokasi</span>
+                <h2 class="section-title">Kunjungi Makam</h2>
+                <p class="section-subtitle">
+                    Temukan lokasi makam Sunan Gunung Jati di Cirebon
+                </p>
+            </div>
+
+            <div class="location-content">
+                <div class="location-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Alamat Lengkap</h4>
+                            <p>Desa Astana, Kecamatan Gunung Jati,<br>Kabupaten Cirebon, Jawa Barat 45165</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Jam Kunjungan</h4>
+                            <p>Senin - Minggu: 08.00 - 16.00 WIB<br>Jumat: 08.00 - 11.00 & 13.00 - 16.00 WIB</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Informasi Penting</h4>
+                            <p>Harap menjaga kesopanan dan kebersihan.<br>Kenakan pakaian yang sopan saat berkunjung.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.0826738516707!2d108.56277431477394!3d-6.742682095136956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1ddc6c3d3d3d%3A0x5e2c2e2b2c2c2c2c!2sMakam%20Sunan%20Gunung%20Jati!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        title="Peta Lokasi Makam Sunan Gunung Jati">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AR CTA Section -->
+    <section class="section ar-cta-section">
+        <div class="container">
+            <div class="ar-cta-content">
+                <div class="ar-cta-text">
+                    <h2>Rasakan Pengalaman Immersive Learning</h2>
+                    <p>
+                        Gunakan teknologi Augmented Reality untuk melihat representasi 3D
+                        Sunan Gunung Jati dan mendengarkan narasi sejarahnya langsung dari
+                        perangkat Anda.
+                    </p>
+                    <ul class="feature-list">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Model 3D interaktif
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Narasi audio sejarah
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Pembelajaran yang menarik
+                        </li>
+                    </ul>
+                    <a href="ar-view.html" class="btn btn-primary btn-large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                            </path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                        Buka AR Camera
+                    </a>
+                </div>
+                <div class="ar-cta-visual">
+                    <div class="ar-preview">
+                        <div class="ar-frame"></div>
+                        <span class="ar-pulse"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Sunan Gunung Jati</h3>
+                    <p>Immersive Learning Experience</p>
+                    <p class="powered-by">Powered by <strong>DAC Indonesia</strong></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#sejarah">Sejarah</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="#lokasi">Lokasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Tentang DAC</h4>
+                    <p>
+                        DAC Indonesia menghadirkan teknologi laptop immersive learning
+                        untuk pendidikan yang lebih interaktif dan menarik.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DAC Indonesia. Platform pembelajaran immersive untuk generasi digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
