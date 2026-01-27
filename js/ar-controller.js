@@ -48,8 +48,16 @@ window.addEventListener('load', function () {
         return;
     }
 
-    // Request camera permission
-    navigator.mediaDevices.getUserMedia({ video: true })
+    // Request camera permission with better constraints for mobile
+    const constraints = {
+        video: {
+            facingMode: 'environment', // Use rear camera on mobile
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+        }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints)
         .then(function (stream) {
             console.log('Camera access granted');
             // Stop the stream immediately, AR.js will handle it
@@ -58,12 +66,25 @@ window.addEventListener('load', function () {
             // Initialize AR
             setTimeout(() => {
                 initAR();
-            }, 1000);
+            }, 1500);
         })
         .catch(function (error) {
             console.error('Camera access denied:', error);
-            showError('Akses kamera ditolak',
-                'Mohon izinkan akses kamera untuk menggunakan fitur AR. Periksa pengaturan browser Anda.');
+
+            // Try with basic constraints if advanced fails
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    console.log('Camera access granted with basic constraints');
+                    stream.getTracks().forEach(track => track.stop());
+
+                    setTimeout(() => {
+                        initAR();
+                    }, 1500);
+                })
+                .catch(function (err) {
+                    showError('Akses kamera ditolak',
+                        'Mohon izinkan akses kamera untuk menggunakan fitur AR. Periksa pengaturan browser Anda.');
+                });
         });
 
     // ========== AR INITIALIZATION ==========
